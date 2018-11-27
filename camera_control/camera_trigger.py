@@ -11,11 +11,16 @@ import threading
 import os
 from sync import image_grabber
 
-pic_loc_addr = "/home/pi/Pictures/"
+pic_loc_addr = "/home/pi/imaging/Pictures/"
 
 image_threads = []
 
+last_time = time.time()
+
 while(True):
+
+	print 'Loop finished, time taken: ',time.time()-last_time
+	last_time = time.time()
 	# Send command to camera to take picture
 	addr = "http://10.98.32.1:80/ctrl/still?action=single"
 	proc2 = Popen(['curl',addr], stdout=PIPE, stderr=PIPE)
@@ -33,10 +38,10 @@ while(True):
 
 
 	#telem trigger
-	with open('/home/pi/camera_control/telemLast.txt','r') as locFile:
+	with open('/home/pi/imaging/camera_control/telemLast.txt','r') as locFile:
 		gps_loc = locFile.readline()
 
-	print(pic_loc)
+	print 'image taken ',pic_loc
 
 	image_threads.append(image_grabber(pic_loc, gps_loc))
 

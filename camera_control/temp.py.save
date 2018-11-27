@@ -1,9 +1,0 @@
-import time
-timeStart = time.time()
-
-while True:
-	trigger_v2.py
-
-	if(time.time() - timeStart < 3):
-		time.sleep(.05)
-	
