@@ -41,5 +41,5 @@ for k in range(3)
 
 	
 
-	image_threads.append(image_grabber(pic_loc, [1.0,2.0,3.0,4.0],'offAxis'))
+	image_threads.append(image_grabber(pic_loc, gps_loc,'emergent'))
 

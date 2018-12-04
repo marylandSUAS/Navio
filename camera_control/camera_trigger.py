@@ -43,5 +43,5 @@ while(True):
 
 	print 'image taken ',pic_loc
 
-	image_threads.append(image_grabber(pic_loc, gps_loc))
+	image_threads.append(image_grabber(pic_loc, gps_loc,'normal'))
 

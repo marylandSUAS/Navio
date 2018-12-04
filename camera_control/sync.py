@@ -8,14 +8,12 @@ Description: script handles downloading images from camera and updating pictures
 
 class image_grabber:
 
-    def __init__(string,gps_loc):
+    def __init__(string,gps_loc,pic_type):
         self.grabber = threading.Thread(target=self.grab_pics)
         self.image_loc = string
 
-        if gps_loc is None:
-            self.gps_loc == 'offAxis'
-        else:
-            self.gps_loc = gps_loc
+        self.typ = pic_type
+        self.gps_loc = gps_loc
 
         self.pic_loc_addr = '/home/pi/Pictures/'
         self.grabber.start()
@@ -39,9 +37,9 @@ class image_grabber:
         proc1.wait()
 
         with open('/home/pi/imaging/camera_control/Logs/imageLog.txt','a+') as locFile:
-            gps_loc = locFile.write(str(time.time())+' '+pic_id+' '+self.gps_loc)
+            locFile.write(str(time.time())+' '+pic_id+' '+self.gps_loc)
 
         with open('/home/pi/imaging/camera_control/Pictures/image_locs.txt','a+') as locFile:
-            gps_loc = locFile.write(pic_id+' '+self.gps_loc)
+            gps_loc = locFile.write(pic_id+' '+self.gps_loc+' '+self.typ)
 
         print 'got image at: '+self.gps_loc
