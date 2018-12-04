@@ -52,20 +52,25 @@ class image_sender:
 
 					pois = Point(1,2,3)
 					hdg = 0.0
+					img_type = 'normal'
 					with open('path_to_file','r') as pos_file:
 						pos_data = pos_file.readlines()
 						for lines in pos_data:
 							dat = lines.split(',')
 							if dat[0] = filey
-								pois.x = dat[1]
-								pois.y = dat[2]
-								pois.z = dat[3]
-								hdg = dat[4]
+								pois.x = float(dat[1])
+								pois.y = float(dat[2])
+								pois.z = float(dat[3])
+								hdg = float(dat[4])
+								img_type = img_type[5]
+
+
 
 
 					message = uav_image_Msg()
 					message.image = output_im
 					message.pos = pois
+					message.type = img_type
 
 					rospy.loginfo(message)
 					self.booley = False	
