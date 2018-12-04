@@ -51,6 +51,17 @@ class image_sender:
 					self.sentfiles.append(filey)	
 
 					pois = Point(1,2,3)
+					hdg = 0.0
+					with open('path_to_file','r') as pos_file:
+						pos_data = pos_file.readlines()
+						for lines in pos_data:
+							dat = lines.split(',')
+							if dat[0] = filey
+								pois.x = dat[1]
+								pois.y = dat[2]
+								pois.z = dat[3]
+								hdg = dat[4]
+
 
 					message = uav_image_Msg()
 					message.image = output_im
