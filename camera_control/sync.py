@@ -40,6 +40,6 @@ class image_grabber:
             locFile.write(str(time.time())+' '+pic_id+' '+self.gps_loc)
 
         with open('/home/pi/imaging/camera_control/Pictures/image_locs.txt','a+') as locFile:
-            gps_loc = locFile.write(pic_id+' '+self.gps_loc+' '+self.typ)
+            gps_loc = locFile.write(pic_id+','+self.gps_loc+','+self.typ)
 
         print 'got image at: '+self.gps_loc
